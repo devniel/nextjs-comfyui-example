@@ -1,0 +1,216 @@
+{
+    "3": {
+      "inputs": {
+        "seed": 75432659468704,
+        "steps": 20,
+        "cfg": 8,
+        "sampler_name": "euler",
+        "scheduler": "normal",
+        "denoise": 1,
+        "model": [
+          "10",
+          0
+        ],
+        "positive": [
+          "6",
+          0
+        ],
+        "negative": [
+          "7",
+          0
+        ],
+        "latent_image": [
+          "5",
+          0
+        ]
+      },
+      "class_type": "KSampler",
+      "_meta": {
+        "title": "KSampler"
+      }
+    },
+    "4": {
+      "inputs": {
+        "ckpt_name": "epicrealism_pureEvolutionV3.safetensors"
+      },
+      "class_type": "CheckpointLoaderSimple",
+      "_meta": {
+        "title": "Load Checkpoint"
+      }
+    },
+    "5": {
+      "inputs": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      },
+      "class_type": "EmptyLatentImage",
+      "_meta": {
+        "title": "Empty Latent Image"
+      }
+    },
+    "6": {
+      "inputs": {
+        "text": [
+          "127",
+          0
+        ],
+        "clip": [
+          "10",
+          1
+        ]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "CLIP Text Encode (Prompt)"
+      }
+    },
+    "7": {
+      "inputs": {
+        "text": "text, watermark, color, bad quality, ugly, morbid, mutilated, blurry, unreal, abstract, open shapes, with background.",
+        "clip": [
+          "10",
+          1
+        ]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "CLIP Text Encode (Prompt)"
+      }
+    },
+    "8": {
+      "inputs": {
+        "samples": [
+          "3",
+          0
+        ],
+        "vae": [
+          "4",
+          2
+        ]
+      },
+      "class_type": "VAEDecode",
+      "_meta": {
+        "title": "VAE Decode"
+      }
+    },
+    "9": {
+      "inputs": {
+        "filename_prefix": "ComfyUI",
+        "images": [
+          "8",
+          0
+        ]
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Image"
+      }
+    },
+    "10": {
+      "inputs": {
+        "lora_name": "child-drawing.safetensors",
+        "strength_model": 1,
+        "strength_clip": 1,
+        "model": [
+          "4",
+          0
+        ],
+        "clip": [
+          "4",
+          1
+        ]
+      },
+      "class_type": "LoraLoader",
+      "_meta": {
+        "title": "Load LoRA"
+      }
+    },
+    "58": {
+      "inputs": {
+        "text": [
+          "59",
+          0
+        ]
+      },
+      "class_type": "ShowText|pysssss",
+      "_meta": {
+        "title": "Show Text 🐍"
+      }
+    },
+    "59": {
+      "inputs": {
+        "prompt": [
+          "139",
+          0
+        ],
+        "debug": "enable",
+        "url": "http://localhost:11434",
+        "model": "llama3",
+        "system": "You are a prompt engineering expert.",
+        "seed": 2013677108,
+        "top_k": 40,
+        "top_p": 0.9,
+        "temperature": 0.8,
+        "num_predict": -1,
+        "tfs_z": 1
+      },
+      "class_type": "OllamaGenerateAdvance",
+      "_meta": {
+        "title": "Ollama Generate Advance"
+      }
+    },
+    "127": {
+      "inputs": {
+        "action": "append",
+        "tidy_tags": "yes",
+        "text_a": [
+          "59",
+          0
+        ],
+        "text_b": ". In a child drawing style, doodle, black and white, single strokes.",
+        "text_c": ""
+      },
+      "class_type": "StringFunction|pysssss",
+      "_meta": {
+        "title": "String Function 🐍"
+      }
+    },
+    "128": {
+      "inputs": {
+        "text": [
+          "127",
+          0
+        ]
+      },
+      "class_type": "ShowText|pysssss",
+      "_meta": {
+        "title": "Show Text 🐍"
+      }
+    },
+    "139": {
+      "inputs": {
+        "action": "replace",
+        "tidy_tags": "yes",
+        "text_a": "Return a basic general text describing one and only one of the following things:\n\n1. An anonymous character doing the following action: {ACTION}\n2. An object related to the following action: {ACTION}.\n\nUse simple words, return only the text, don't add quotation marks.\n\nExample:\n\n- If action is \"programming\" then result will be example (a) or (b) :\n\n(a) A person programming in a laptop.\n(b) A keyboard.\n\nOther rules:\n\n- Return directly the description, no indication beforehand.\n- Use basic words.\n- Realistic description.\n- Text should finish with space instead of endpoint.",
+        "text_b": "{ACTION}",
+        "text_c": "singing"
+      },
+      "class_type": "StringFunction|pysssss",
+      "_meta": {
+        "title": "String Function 🐍"
+      }
+    },
+    "140": {
+      "inputs": {
+        "text": [
+          "139",
+          0
+        ]
+      },
+      "class_type": "ShowText|pysssss",
+      "_meta": {
+        "title": "Show Text 🐍"
+      }
+    }
+  }
